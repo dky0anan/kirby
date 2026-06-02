@@ -85,20 +85,20 @@ void StageBase::gameLoop() {
             // 條件：最淺的重疊是頂部，且重疊量小於 35 (容忍快速下墜的穿透量)，且沒有在按上鍵(往上飛)
             if (minOverlap == overlapTop && overlapTop > 0 && overlapTop <= 35 && !kirby->isPressingUp()) {
                 kirby->setPos(kirby->x(), blockTop - kirbyH);
-                if (state == Kirby::FastFalling || state == Kirby::Flying) {
+                if (state == Kirby::FastFalling /*|| state == Kirby::Flying*/ ) {
                     kirby->landOnGround();
                 }
-                hitBlock = true;
+                //hitBlock = true;
             }
             // 單向平台不處理左右撞牆，處理完直接換下一個判定物件
             continue;
         }
 
         // ===== 一般實體 Block 判斷 =====
-        hitBlock = true;
+        //hitBlock = true;
         if (minOverlap == overlapTop) {
             kirby->setPos(kirby->x(), blockTop - kirbyH);
-            if (state == Kirby::FastFalling || state == Kirby::Flying) {
+            if (state == Kirby::FastFalling /*|| state == Kirby::Flying*/ ) {
                 kirby->landOnGround();
             }
         } else if (minOverlap == overlapLeft) {
